@@ -11,6 +11,7 @@ export class PorPaisComponent {
 
   termino:string = '';
   existError: boolean = false;
+  showTable: boolean = false
   private _paises: Country[] = [];
 
   constructor(private paisService: PaisService) {}
@@ -26,10 +27,12 @@ export class PorPaisComponent {
                         this.existError = false;
                         console.log(data);
                         this._paises = data;
+                        this.showTable = true
                       },
                       error: (__) => {
                         this.existError = true;
                         this._paises = []
+                        this.showTable = false;
                       }
                     });
   }

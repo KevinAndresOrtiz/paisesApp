@@ -15,11 +15,13 @@
 
 </div>
 <hr>
-<div class="alert alert-danger">
-  error
+<div
+    *ngIf="existError"
+    class="alert alert-danger">
+  No se encuentra dicho pais con el termino {{termino}}
 </div>
 
-<div class="row">
+<div *ngIf="!existError" class="row">
   <div class="col">
     <table class="table table-hover">
       <thead>

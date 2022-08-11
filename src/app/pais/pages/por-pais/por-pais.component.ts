@@ -20,8 +20,8 @@ export class PorPaisComponent {
     return [...this._paises];
   }
 
-  buscar(){
-    this.paisService.buscarPais(this.termino)
+  buscar(termino: string){
+    this.paisService.buscarPais(termino)
                     .subscribe({
                       next: (data) => {
                         this.existError = false;

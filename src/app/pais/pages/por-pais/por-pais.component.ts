@@ -25,7 +25,6 @@ export class PorPaisComponent {
                     .subscribe({
                       next: (data) => {
                         this.existError = false;
-                        console.log(data);
                         this._paises = data;
                         this.showTable = true
                       },

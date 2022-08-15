@@ -14,6 +14,7 @@ export class PorPaisComponent {
   showTable: boolean = false
   private _paises: Country[] = [];
   private _paisesSugeridos: Country[] = []
+  mostrarSugerencia: boolean = false
 
   constructor(private paisService: PaisService) {}
 
@@ -43,6 +44,7 @@ export class PorPaisComponent {
 
   sugerencia(termino: string) {
     this.existError = false;
+    this.mostrarSugerencia = true
     this.paisService.buscarPais( termino )
                     .subscribe( {
                       next: (paises) =>{

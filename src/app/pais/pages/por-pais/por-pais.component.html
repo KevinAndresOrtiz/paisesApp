@@ -11,7 +11,7 @@
   </div>
 
 </div>
-<ul class="list-group">
+<ul class="list-group" *ngIf="mostrarSugerencia">
   <li *ngFor="let pais of paisesSugeridos"
       class="list-group-item list-group-item-action">
       <a [routerLink]="['/pais',pais.alpha2Code]">

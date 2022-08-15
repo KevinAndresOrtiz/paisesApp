@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Country } from '../interfaces/pais.interface';
@@ -27,7 +27,9 @@ export class PaisService {
 
   }
   buscarRegion(region: string):Observable<Country[]>{
+    const params = new HttpParams()
+                            .set('fields','name,capital,alpha2Code,flag,population')
     const url = `${this.apiUrl}/regionalbloc/${region}`
-    return this.http.get<Country[]>(url);
-  }
+    return this.http.get<Country[]>(url,{params});
+}
 }

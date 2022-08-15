@@ -13,11 +13,16 @@ export class PorPaisComponent {
   existError: boolean = false;
   showTable: boolean = false
   private _paises: Country[] = [];
+  private _paisesSugeridos: Country[] = []
 
   constructor(private paisService: PaisService) {}
 
   get paises(){
     return [...this._paises];
+  }
+
+  get paisesSugeridos(){
+    return [...this._paisesSugeridos];
   }
 
   buscar(termino: string){
@@ -38,6 +43,14 @@ export class PorPaisComponent {
 
   sugerencia(termino: string) {
     this.existError = false;
-    console.log(termino)
+    this.paisService.buscarPais( termino )
+                    .subscribe( {
+                      next: (paises) =>{
+                        this._paisesSugeridos = paises.splice(0,3)
+                      },
+                      error: (__) => {
+                        this._paisesSugeridos = []
+                      }
+                    })
   }
 }

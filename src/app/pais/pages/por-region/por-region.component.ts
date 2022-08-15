@@ -18,7 +18,7 @@ export class PorRegionComponent implements OnInit {
   }
 
   get paisesRegion(){
-    return this._paisesRegion
+    return [...this._paisesRegion]
   }
 
   activarRegion(region: string) {
